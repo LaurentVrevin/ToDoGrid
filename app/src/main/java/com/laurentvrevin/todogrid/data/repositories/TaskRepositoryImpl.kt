@@ -4,12 +4,12 @@ import com.laurentvrevin.todogrid.data.dao.TaskDao
 import com.laurentvrevin.todogrid.domain.mapper.toDomainModel
 import com.laurentvrevin.todogrid.domain.mapper.toEntity
 import com.laurentvrevin.todogrid.domain.models.Task
-import com.laurentvrevin.todogrid.domain.repositories.ToDoRepository
+import com.laurentvrevin.todogrid.domain.repositories.TaskRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
-abstract class ToDoRepositoryImpl @Inject constructor(private val taskDao: TaskDao): ToDoRepository {
+abstract class TaskRepositoryImpl @Inject constructor(private val taskDao: TaskDao): TaskRepository {
 
     override fun getAllTasks(): Flow<List<Task>> =
         taskDao.getAllTasks().map { entities ->

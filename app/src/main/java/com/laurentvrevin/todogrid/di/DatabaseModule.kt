@@ -2,10 +2,8 @@ package com.laurentvrevin.todogrid.di
 
 import android.content.Context
 import androidx.room.Room
-import androidx.room.TypeConverters
 import com.laurentvrevin.todogrid.data.dao.TaskDao
 import com.laurentvrevin.todogrid.data.database.ToDoGridDatabase
-import com.laurentvrevin.todogrid.utils.Converters
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

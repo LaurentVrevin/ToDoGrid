@@ -8,7 +8,7 @@ data class Task(
     val description:String,
     val createDate: Date = Date(),
     val deadline: Date,
-    //val status: TaskStatus
-    //val priority: TaskPriority,
+    val status: TaskStatus,
+    val priority: TaskPriority,
     val order: Int? = null
 )

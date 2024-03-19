@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
-abstract class TaskRepositoryImpl @Inject constructor(private val taskDao: TaskDao): TaskRepository {
+class TaskRepositoryImpl @Inject constructor(private val taskDao: TaskDao): TaskRepository {
 
     override fun getAllTasks(): Flow<List<Task>> =
         taskDao.getAllTasks().map { entities ->

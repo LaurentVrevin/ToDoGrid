@@ -1,4 +1,4 @@
-package com.laurentvrevin.todogrid.ui.theme
+package com.laurentvrevin.todogrid.presentation.ui.theme
 
 import android.app.Activity
 import android.os.Build

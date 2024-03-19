@@ -1,4 +1,4 @@
-package com.laurentvrevin.todogrid.ui.theme
+package com.laurentvrevin.todogrid.presentation.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

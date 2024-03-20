@@ -1,5 +1,6 @@
 package com.laurentvrevin.todogrid.presentation.ui.screens
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -31,6 +32,7 @@ import com.laurentvrevin.todogrid.presentation.ui.theme.ToDoGridTheme
 import com.laurentvrevin.todogrid.presentation.viewmodels.TaskViewModel
 import java.util.Date
 
+@SuppressLint("SuspiciousIndentation")
 @Composable
 fun TaskListScreen(
     taskViewModel: TaskViewModel,

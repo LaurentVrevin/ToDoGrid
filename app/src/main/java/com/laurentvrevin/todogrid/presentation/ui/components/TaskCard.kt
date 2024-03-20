@@ -12,11 +12,12 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Path
+
 import androidx.compose.ui.graphics.PathEffect
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.tooling.preview.Preview
@@ -26,12 +27,14 @@ import com.laurentvrevin.todogrid.domain.models.TaskPriority
 import com.laurentvrevin.todogrid.domain.models.TaskStatus
 import java.util.Date
 
+
 @SuppressLint("SimpleDateFormat")
 @Composable
 fun TaskCard(
     task: Task,
     onTaskClick: () -> Unit,
 ) {
+
     Card(
         modifier = Modifier
             .padding(horizontal = 8.dp, vertical = 4.dp)
@@ -49,19 +52,23 @@ fun TaskCard(
                     style = MaterialTheme.typography.bodyMedium
                 )
             }
-            Canvas(modifier = Modifier.matchParentSize()) {
+            Canvas(modifier = Modifier
+                .matchParentSize()
+                .padding(1.dp)
+            ) {
                 val strokeWidth = 2.dp.toPx()
                 val pathEffect = PathEffect.cornerPathEffect(12.dp.toPx())
                 drawRoundRect(
                     color = Color.Black,
                     size = Size(size.width - strokeWidth, size.height - strokeWidth), // Ajuste la taille pour le stroke
-                    cornerRadius = CornerRadius(12.dp.toPx()),
+                    cornerRadius = CornerRadius(12.dp.toPx(), 12.dp.toPx()),
                     style = Stroke(width = strokeWidth, pathEffect = pathEffect)
                 )
             }
         }
     }
 }
+
 
 @Preview(showBackground = true)
 @Composable

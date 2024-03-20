@@ -3,7 +3,6 @@ package com.laurentvrevin.todogrid.presentation.viewmodels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.laurentvrevin.todogrid.domain.models.Task
-import com.laurentvrevin.todogrid.domain.repositories.TaskRepository
 import com.laurentvrevin.todogrid.domain.usecases.AddTaskUseCase
 import com.laurentvrevin.todogrid.domain.usecases.DeleteTaskUseCase
 import com.laurentvrevin.todogrid.domain.usecases.GetAllTasksUseCase
@@ -23,7 +22,7 @@ class TaskViewModel @Inject constructor(
 
     ) : ViewModel() {
 
-    val showForm = MutableStateFlow(false)
+
     private val _tasks = MutableStateFlow<List<Task>>(emptyList())
     val tasks: StateFlow<List<Task>> = _tasks
 

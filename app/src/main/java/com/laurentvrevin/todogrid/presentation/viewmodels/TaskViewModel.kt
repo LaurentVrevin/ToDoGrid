@@ -19,9 +19,11 @@ class TaskViewModel @Inject constructor(
     private val getAllTasksUseCase: GetAllTasksUseCase,
     private val addTaskUseCase: AddTaskUseCase,
     private val updateTaskUseCase: UpdateTaskUseCase,
-    private val deleteTaskUseCase: DeleteTaskUseCase
+    private val deleteTaskUseCase: DeleteTaskUseCase,
+
     ) : ViewModel() {
 
+    val showForm = MutableStateFlow(false)
     private val _tasks = MutableStateFlow<List<Task>>(emptyList())
     val tasks: StateFlow<List<Task>> = _tasks
 

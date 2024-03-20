@@ -14,19 +14,18 @@ import androidx.compose.ui.unit.dp
 import com.laurentvrevin.todogrid.domain.models.Task
 import com.laurentvrevin.todogrid.domain.models.TaskPriority
 import com.laurentvrevin.todogrid.domain.models.TaskStatus
-import java.text.SimpleDateFormat
 import java.util.Date
 
 @SuppressLint("SimpleDateFormat")
 @Composable
 fun TaskCard(
     task: Task,
-    onTaskClick: (Task) -> Unit,
+    onTaskClick: () -> Unit,
 ){
     Card(
         modifier = Modifier
             .padding(horizontal = 8.dp, vertical = 4.dp)
-            .clickable(onClick = { onTaskClick(task) })
+            .clickable(onClick = onTaskClick)
     ) {
         Column(modifier = Modifier
             .padding(horizontal = 8.dp, vertical = 8.dp)
@@ -62,6 +61,6 @@ fun TaskCardPreview() {
                 priority = TaskPriority.HIGH
 
             ),
-            onTaskClick = {}
+             onTaskClick = {}
         )
 }

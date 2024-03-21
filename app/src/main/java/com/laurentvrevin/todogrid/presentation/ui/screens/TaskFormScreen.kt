@@ -1,8 +1,10 @@
 package com.laurentvrevin.todogrid.presentation.ui.screens
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
@@ -30,6 +32,7 @@ import com.laurentvrevin.todogrid.domain.models.Task
 import com.laurentvrevin.todogrid.domain.models.TaskPriority
 import com.laurentvrevin.todogrid.domain.models.TaskStatus
 import com.laurentvrevin.todogrid.presentation.ui.components.DoodleBorderBox
+import com.laurentvrevin.todogrid.presentation.ui.components.PriorityButton
 import com.laurentvrevin.todogrid.presentation.viewmodels.TaskViewModel
 import java.util.Date
 
@@ -59,6 +62,7 @@ fun TaskFormScreen(
         ) {
             Text(text = "BenTasks", style = MaterialTheme.typography.displayLarge)
 
+            //UI pour le titre et la description
             Box(modifier = Modifier.fillMaxSize()) {
                 Column(modifier = Modifier.fillMaxSize()) {
 
@@ -114,6 +118,25 @@ fun TaskFormScreen(
                     }
 
 
+                    //UI pour la sélection de la priorité
+
+                    Row(
+                        modifier = Modifier.fillMaxWidth().padding(16.dp),
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        PriorityButton("Low", priority == TaskPriority.LOW) {
+                            priority = TaskPriority.LOW
+                        }
+                        PriorityButton("Medium", priority == TaskPriority.MEDIUM) {
+                            priority = TaskPriority.MEDIUM
+                        }
+                        PriorityButton("High", priority == TaskPriority.HIGH) {
+                            priority = TaskPriority.HIGH
+                        }
+                    }
+
+
+                    //Button pour ajouter ou mettre à jour la tâche
                     Button(
                         onClick = {
                             if (task == null) {

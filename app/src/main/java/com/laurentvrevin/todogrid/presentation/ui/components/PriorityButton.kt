@@ -11,7 +11,9 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.unit.dp
 import com.laurentvrevin.todogrid.domain.models.TaskPriority
 
@@ -23,8 +25,10 @@ fun PriorityButton(
         onClick = { onSelected() }, colors = ButtonDefaults.buttonColors(
             containerColor = if (isSelected) MaterialTheme.colorScheme.primary else Color.Transparent,
             contentColor = if (isSelected) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.primary
-        ), modifier = Modifier.height(40.dp)
-    ) {
+        ),
+        modifier = Modifier.height(40.dp),
+        border = ButtonDefaults.outlinedButtonBorder.copy(brush = SolidColor(Color.Transparent))
+    ){
         Text(text)
     }
 }

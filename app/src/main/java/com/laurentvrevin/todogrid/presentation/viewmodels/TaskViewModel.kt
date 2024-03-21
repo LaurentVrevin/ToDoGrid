@@ -3,6 +3,8 @@ package com.laurentvrevin.todogrid.presentation.viewmodels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.laurentvrevin.todogrid.domain.models.Task
+import com.laurentvrevin.todogrid.domain.models.TaskPriority
+import com.laurentvrevin.todogrid.domain.models.TaskStatus
 import com.laurentvrevin.todogrid.domain.usecases.AddTaskUseCase
 import com.laurentvrevin.todogrid.domain.usecases.DeleteTaskUseCase
 import com.laurentvrevin.todogrid.domain.usecases.GetAllTasksUseCase
@@ -11,6 +13,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import java.util.Date
 import javax.inject.Inject
 
 @HiltViewModel
@@ -56,6 +59,35 @@ class TaskViewModel @Inject constructor(
         viewModelScope.launch {
             deleteTaskUseCase(id)
             loadTasks()
+        }
+    }
+    fun submitTask(
+        task: Task?,
+        title: String,
+        description: String,
+        deadline: Date,
+        priority: TaskPriority
+    ) {
+        if (task == null) {
+            val newTask = Task(
+                title = title,
+                description = description,
+                deadline = deadline,
+                createDate = Date(),
+                status = TaskStatus.TODO,
+                priority = priority
+            )
+            addTask(newTask)
+        } else {
+            val updatedTask = task.copy(
+                title = title,
+                description = description,
+                deadline = deadline,
+                createDate = Date(),
+                status = TaskStatus.TODO,
+                priority = priority
+            )
+            updateTask(updatedTask)
         }
     }
 

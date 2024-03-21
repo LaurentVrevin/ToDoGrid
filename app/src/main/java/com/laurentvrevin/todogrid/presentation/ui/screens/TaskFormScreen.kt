@@ -1,7 +1,6 @@
 package com.laurentvrevin.todogrid.presentation.ui.screens
 
 import android.annotation.SuppressLint
-import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,7 +9,7 @@ import androidx.compose.foundation.layout.heightIn
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
-import androidx.compose.material3.ExperimentalMaterial3Api
+
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -22,11 +21,9 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.CornerRadius
-import androidx.compose.ui.geometry.Size
+
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PathEffect
-import androidx.compose.ui.graphics.drawscope.Stroke
+
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.laurentvrevin.todogrid.domain.models.Task
@@ -36,7 +33,6 @@ import com.laurentvrevin.todogrid.presentation.ui.components.DoodleBorderBox
 import com.laurentvrevin.todogrid.presentation.viewmodels.TaskViewModel
 import java.util.Date
 
-@OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("StateFlowValueCalledInComposition")
 @Composable
 fun TaskFormScreen(
@@ -44,8 +40,12 @@ fun TaskFormScreen(
     navController: NavController,
     taskId: Int?=null,
 ){
-    val task = taskViewModel.tasks.value.find { it.id == taskId }
+    // Si taskId` n'est pas null, cherche la tâche correspondante
+    val task = taskId?.let { id ->
+        taskViewModel.tasks.value.find { it.id == id }
+    }
 
+    // Les `rememberSaveable` permettent de conserver les états lors des recompositions
     var title by rememberSaveable { mutableStateOf(task?.title ?: "") }
     var description by rememberSaveable { mutableStateOf(task?.description ?: "") }
     var deadline by rememberSaveable { mutableStateOf(task?.deadline ?: Date()) }
@@ -133,7 +133,11 @@ fun TaskFormScreen(
                                 taskViewModel.updateTask(
                                     task.copy(
                                         title = title,
-                                        description = description /* autres champs */
+                                        description = description,
+                                        deadline = deadline,
+                                        createDate = Date(),
+                                        status = TaskStatus.TODO,
+                                        priority = priority
                                     )
                                 )
                             }
@@ -151,11 +155,3 @@ fun TaskFormScreen(
         }
     }
 }
-
-/*@Preview(showBackground = true)
-@Composable
-fun TaskFormScreenPreview(){
-    TaskFormScreen(
-
-    )
-}*/

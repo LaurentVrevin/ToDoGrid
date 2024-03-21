@@ -45,12 +45,12 @@ fun AppNavigation(taskViewModel: TaskViewModel) {
                 }
         }
         composable(
-            "taskForm/{taskId?}",
-            arguments = listOf(
-                navArgument("taskId")
-                {
-                    type = NavType.IntType; defaultValue = -1
-                })
+            "taskForm/{taskId}",
+            arguments = listOf(navArgument("taskId")
+            {
+                type = NavType.IntType
+                defaultValue = -1
+            })
         ) { backStackEntry ->
             TaskFormScreen(
                 taskId = backStackEntry.arguments?.getInt("taskId"),

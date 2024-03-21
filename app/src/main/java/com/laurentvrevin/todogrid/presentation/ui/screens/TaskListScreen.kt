@@ -67,7 +67,7 @@ fun TaskListScreen(
                 }
                 AddTaskFAB(
                     onClick = {
-                        navController.navigate("taskForm/{taskId?}")
+                        navController.navigate("taskForm/-1")
                     },
                     modifier = Modifier
                         .padding(24.dp)

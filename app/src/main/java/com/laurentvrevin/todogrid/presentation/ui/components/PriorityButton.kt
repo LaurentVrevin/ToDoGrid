@@ -17,21 +17,18 @@ import com.laurentvrevin.todogrid.domain.models.TaskPriority
 
 @Composable
 fun PriorityButton(
-    text: String,
-    isSelected: Boolean,
-    onSelected: () -> Unit
+    text: String, isSelected: Boolean, onSelected: () -> Unit
 ) {
     OutlinedButton(
-        onClick = { onSelected() },
-        colors = ButtonDefaults.buttonColors(
+        onClick = { onSelected() }, colors = ButtonDefaults.buttonColors(
             containerColor = if (isSelected) MaterialTheme.colorScheme.primary else Color.Transparent,
             contentColor = if (isSelected) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.primary
-        ),
-        modifier = Modifier.height(40.dp)
+        ), modifier = Modifier.height(40.dp)
     ) {
         Text(text)
     }
 }
+
 @Composable
 fun PrioritySelector(priority: TaskPriority, onPrioritySelected: (TaskPriority) -> Unit) {
     Row(
@@ -40,14 +37,23 @@ fun PrioritySelector(priority: TaskPriority, onPrioritySelected: (TaskPriority) 
             .padding(16.dp),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        PriorityButton("Low", priority == TaskPriority.LOW) {
-            onPrioritySelected(TaskPriority.LOW)
+        DoodleBorderBox() {
+            PriorityButton("Low", priority == TaskPriority.LOW) {
+                onPrioritySelected(TaskPriority.LOW)
+            }
         }
-        PriorityButton("Medium", priority == TaskPriority.MEDIUM) {
-            onPrioritySelected(TaskPriority.MEDIUM)
+
+        DoodleBorderBox() {
+            PriorityButton("Medium", priority == TaskPriority.MEDIUM) {
+                onPrioritySelected(TaskPriority.MEDIUM)
+            }
         }
-        PriorityButton("High", priority == TaskPriority.HIGH) {
-            onPrioritySelected(TaskPriority.HIGH)
+        DoodleBorderBox() {
+            PriorityButton("High", priority == TaskPriority.HIGH) {
+                onPrioritySelected(TaskPriority.HIGH)
+            }
         }
+
+
     }
 }

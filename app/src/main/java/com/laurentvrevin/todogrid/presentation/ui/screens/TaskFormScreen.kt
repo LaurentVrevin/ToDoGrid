@@ -1,6 +1,7 @@
 package com.laurentvrevin.todogrid.presentation.ui.screens
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -22,6 +23,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.laurentvrevin.todogrid.domain.models.TaskPriority
@@ -58,7 +60,8 @@ fun TaskFormScreen(
     var deadline by rememberSaveable { mutableStateOf(task?.deadline ?: Date()) }
     var priority by rememberSaveable { mutableStateOf(task?.priority ?: TaskPriority.MEDIUM) }
 
-    Box (modifier = Modifier.fillMaxSize()) {
+    Box (modifier = Modifier.fillMaxSize()
+        .background(color = Color.Blue)) {
         Column (modifier = Modifier
             .fillMaxSize()
 
@@ -75,14 +78,17 @@ fun TaskFormScreen(
                         onValueChange = { title = it },
                         label = { Text("Title") },
                         maxLines = 1
+
                     )
 
                     CustomTextField(
                         value = description,
                         onValueChange = { description = it },
                         label = { Text("Description") },
-                        maxLines = 5
+                        maxLines = 5,
+                        height = 250.dp
                     )
+
                     // UI pour le DatePicker
                     DatePickerButton(selectedDate = selectedDate) { newSelectedDate ->
                         selectedDate = newSelectedDate

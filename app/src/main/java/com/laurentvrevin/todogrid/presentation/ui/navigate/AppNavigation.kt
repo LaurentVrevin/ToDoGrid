@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.laurentvrevin.todogrid.presentation.ui.screens.SplashScreen
 import com.laurentvrevin.todogrid.presentation.ui.screens.TaskDetailScreen
 import com.laurentvrevin.todogrid.presentation.ui.screens.TaskFormScreen
 import com.laurentvrevin.todogrid.presentation.ui.screens.TaskListScreen
@@ -16,8 +17,15 @@ fun AppNavigation(taskViewModel: TaskViewModel) {
     val navController = rememberNavController()
     NavHost(
         navController = navController,
-        startDestination = "taskList"
+        startDestination = "splashScreen"
     ) {
+        composable(
+            "splashScreen"
+        ) {
+            SplashScreen(
+                navController
+            )
+        }
         composable(
             "taskList"
         ) {

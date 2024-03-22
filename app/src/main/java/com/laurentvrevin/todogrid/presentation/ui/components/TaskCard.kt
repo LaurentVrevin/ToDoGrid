@@ -37,13 +37,15 @@ import java.util.Date
 @Composable
 fun TaskCard(
     task: Task,
+    backgroundColor: Color = MaterialTheme.colorScheme.primary,
     onTaskClick: () -> Unit,
+
 ) {
-    val backgroundColor = when(task.priority) {
+    /*val backgroundColor = when(task.priority) {
         TaskPriority.LOW -> BlueCustom
         TaskPriority.MEDIUM -> YellowCustom
         TaskPriority.HIGH -> RedCustom
-    }
+    }*/
 
     Card(
         modifier = Modifier

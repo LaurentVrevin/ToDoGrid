@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="Theme.ToDoGrid" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <style name="Theme.ToDoGrid" parent="android:Theme.Material.Light.NoActionBar" >
+
+    </style>
+
+    <style name="Theme.MySplashScreen"  parent="Theme.SplashScreen">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="windowSplashScreenBackground" >@android:color/white</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="postSplashScreenTheme">@style/Theme.ToDoGrid</item>
+    </style>
+
+
+
+
 </resources>

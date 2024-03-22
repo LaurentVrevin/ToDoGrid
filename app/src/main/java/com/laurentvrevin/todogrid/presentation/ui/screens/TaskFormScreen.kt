@@ -60,8 +60,7 @@ fun TaskFormScreen(
     var deadline by rememberSaveable { mutableStateOf(task?.deadline ?: Date()) }
     var priority by rememberSaveable { mutableStateOf(task?.priority ?: TaskPriority.MEDIUM) }
 
-    Box (modifier = Modifier
-        .fillMaxSize())
+    Box (modifier = Modifier.fillMaxSize())
     {
         Column (modifier = Modifier
             .fillMaxSize()

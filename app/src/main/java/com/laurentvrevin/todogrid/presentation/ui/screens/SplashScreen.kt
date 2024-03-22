@@ -21,6 +21,13 @@ import kotlinx.coroutines.delay
 
 @Composable
 fun SplashScreen(navController: NavController) {
+// Delay
+    LaunchedEffect(key1 = true) {
+        delay(2000) // Retard de 2 secondes
+        navController.navigate("taskList") {
+            popUpTo("splashScreen") { inclusive = true }
+        }
+    }
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
@@ -39,14 +46,6 @@ fun SplashScreen(navController: NavController) {
                     .padding(16.dp)
                     .size(150.dp, 150.dp)
             )
-
-            // Delay
-            LaunchedEffect(key1 = true) {
-                delay(5000) // Retard de 5 secondes
-                navController.navigate("taskList") {
-                    popUpTo("splashScreen") { inclusive = true }
-                }
-            }
         }
     }
 }

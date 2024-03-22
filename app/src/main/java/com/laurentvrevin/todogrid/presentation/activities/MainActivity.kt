@@ -1,10 +1,11 @@
 package com.laurentvrevin.todogrid.presentation.activities
 
 import android.os.Bundle
+import android.view.View
+import android.view.WindowManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.laurentvrevin.todogrid.presentation.ui.navigate.AppNavigation
 import com.laurentvrevin.todogrid.presentation.ui.theme.ToDoGridTheme
@@ -15,6 +16,11 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        installSplashScreen()
+        window.apply {
+            addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
+            decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+        }
         setContent {
             ToDoGridTheme {
                 val taskViewModel: TaskViewModel = hiltViewModel()
@@ -22,13 +28,5 @@ class MainActivity : ComponentActivity() {
                 AppNavigation(taskViewModel = taskViewModel)
             }
         }
-    }
-}
-
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    ToDoGridTheme {
     }
 }
